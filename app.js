@@ -1,5 +1,5 @@
 let amigos = [];
-
+// Función para agregar amigos
 function agregarAmigo() {
     // 1. Capturar el valor del input
     let nombreAmigo = document.getElementById("amigo").value;
@@ -31,4 +31,28 @@ function actualizarLista() {
         li.textContent = amigo;
         lista.appendChild(li); // Agregarlo a la <ul>
     });
+}
+
+
+
+function sortearAmigo() {
+    // 1. Validar que haya amigos en el array
+    if (amigos.length === 0) {
+        alert("Debe agregar al menos un nombre para hacer el sorteo.");
+        return;
+    }
+
+    // 2. Generar un índice aleatorio entre 0 y (amigos.length - 1)
+    let indiceSorteado = Math.floor(Math.random() * amigos.length);
+
+    // 3. Obtener el nombre correspondiente a ese índice
+    let amigoSorteado = amigos[indiceSorteado];
+
+    // 4. Mostrar el nombre en el <ul id="resultado">
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = ""; // Limpiar contenido anterior
+
+    let li = document.createElement("li");
+    li.textContent = `El amigo sorteado es: ${amigoSorteado}`;
+    resultado.appendChild(li);
 }
